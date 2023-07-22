@@ -1,0 +1,94 @@
+/* Default styles */
+
+.formInput {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+.passwordField {
+	display: flex;
+	align-items: center;
+}
+
+.btnSH {
+	border-radius: 0px 5px 5px 0px;
+	outline: #000;
+	border: 1px solid rgb(0, 0, 0);
+	width: 80px;
+	height: 40px;
+	background-color: #fff;
+	position:fixed;
+	top:215px;
+	left:55%;
+}
+
+img {
+	width: 30px;
+	height: 30px;
+}
+
+input {
+	padding: 15px;
+	margin: 10px 0px;
+	border-radius: 5px;
+	border: 1px solid rgb(0, 0, 0);
+}
+
+
+.passwordField input {
+	border-radius: 5px 0px 0px 5px;
+	border-top-right-radius: 0; /* Set the border radius to 0 for the top right corner */
+	border-bottom-right-radius: 0;
+}
+
+label {
+	font-size: 12px;
+	color: rgb(0, 0, 0);
+}
+
+.error-message {
+	font-size: 12px;
+	margin-bottom: 15px;
+	padding: 15px;
+	color: rgb(65, 0, 0);
+	display: none;
+	background-color: rgb(255, 156, 156);
+	border-radius: 5px;
+}
+
+
+input:isInvalid[focused='true'] {
+	border: 1px solid red;
+}
+
+input:isInvalid[focused='true'] ~ span {
+	display: block;
+}
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+	.formInput {
+		width: 100%;
+	}
+
+	input {
+		width: 100%;
+	}
+
+	label,
+	span {
+		font-size: 14px;
+	}
+}
+
+.input-container {
+	position: relative;
+}
+
+.input-container input {
+	padding-right: 40px; /* Add padding on the right for the eye button */
+}
