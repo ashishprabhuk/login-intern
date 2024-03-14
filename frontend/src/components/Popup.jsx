@@ -121,7 +121,7 @@ const Signup = props => {
 
 	return (
 		<div>
-			<Button onClick={handleOpen} id="signup">
+			<Button type='submit' onClick={handleOpen} id="signup">
 				Sign Up
 			</Button>
 			<Modal
@@ -325,7 +325,6 @@ const Popup = () => {
 		<div className="popup">
 			<Forgot className="forgot" />
 			<Signup className="signup" />
-			{/* <Success/> */}
 		</div>
 	);
 };

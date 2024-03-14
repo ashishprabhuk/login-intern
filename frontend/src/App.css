@@ -7,7 +7,7 @@
 	height: 100vh;
 	background-size: cover;
 	background-position: center;
-	background-color: rgb(37, 37, 57);
+	background-color: rgb(69,69,69);
 }
 
 form {
@@ -17,6 +17,7 @@ form {
 	padding-right: 30px;
 	border-radius: 10px;
 	max-width: fit-content;
+	width: fit-content;
 }
 
 h1 {

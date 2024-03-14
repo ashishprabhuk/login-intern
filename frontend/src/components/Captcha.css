@@ -26,15 +26,6 @@
 	margin-bottom: 15px;
 	position: initial;
 }
-.captcha {
-	display: flex;
-	width: 100%;
-}
-#captchaField {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-}
 
 #btnLog {
 	width: 100%;

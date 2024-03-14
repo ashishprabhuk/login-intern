@@ -3,6 +3,7 @@ import './App.css';
 import Popup from './components/Popup.jsx';
 import FormInput from './components/FormInput.jsx';
 import Captcha from './components/Captcha.jsx';
+import ProfilePage from './components/ProfilePage.jsx';
 
 const App = () => {
 	const [values, setValues] = useState({

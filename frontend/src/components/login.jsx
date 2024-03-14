@@ -9,8 +9,6 @@ const Login = props => {
 	const [errorModalVisible, setErrorModalVisible] = useState(false);
 	const [errorModalMessage, setErrorModalMessage] = useState('');
 	const [validationFailed, setValidationFailed] = useState(false);
-	// const [employeeCode, setEmployeeCode] = useState('');
-	// const [employeeID, setEmployeeID] = useState('');
 
 	const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(props.email);
 	const hasValidPassword =
@@ -36,12 +34,11 @@ const Login = props => {
 			} else {
 				// Login failed, show the error message
 				setValidationFailed(true); // Set validationFailed to true
-				// setErrorModalMessage(data.message); // Display the error message from the server
-				// setErrorModalVisible(true);
+				setErrorModalMessage(data.message); // Display the error message from the server
+				setErrorModalVisible(true);
 			}
             setShowModal(true);
 		} catch (error) {
-			// Handle the error (e.g., network error)
 			console.error(error);
 			setValidationFailed(true); // Set validationFailed to true on network error
 			setErrorModalMessage('Unauthorized! Check username and password.'); // Set a generic error message
@@ -49,73 +46,31 @@ const Login = props => {
 		}
 	};
 
-	// const handleSuccess = () => {
-	// 	setShowModal(true);
-	// 	console.log('Captcha matched!');
-	// Invoke sendRequest function
-	// };
-
 	const closeModal = () => {
 		setShowModal(false);
 		props.setUserInput('');
-		props.generateCaptcha();
 	};
 
 	const handleValidate = () => {
-		if (
-			props.userInput === props.captcha &&
-			isEmailValid &&
-			hasValidPassword
-		) {
-			// setShowModal(true);
-			// handleSuccess();
+		if (isEmailValid && hasValidPassword) {
+			// Both email and password are valid
 			setValidationFailed(false);
-            sendRequest();
-			// setEmployeeCode(generateRandomEmployeeCode(5, 12));
-			// setEmployeeID(generateRandomEmployeeID());
+			sendRequest();
 		} else {
-			setErrorMessage('Password does not match');
-			setErrorModalMessage('Invalid Captcha');
+			setErrorMessage('Email or password is not valid');
 			setValidationFailed(true);
 			setErrorModalVisible(true);
-            props.generateCaptcha();
 		}
 	};
+	
 
 	const closeErrorModal = () => {
 		setErrorModalVisible(false);
 		setErrorModalMessage('');
 	};
 
-	// const generateRandomEmployeeCode = (min, max) => {
-	// 	const length = Math.floor(Math.random() * (max - min + 1)) + min;
-	// 	const characters =
-	// 		'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-	// 	let result = '';
-	// 	for (let i = 0; i < length; i++) {
-	// 		const randomIndex = Math.floor(Math.random() * characters.length);
-	// 		result += characters[randomIndex];
-	// 	}
-	// 	return result;
-	// };
-
-	// const generateRandomEmployeeID = () => {
-	// 	return Math.floor(Math.random() * 1000000) + 1;
-	// };
-
 	return (
 		<div>
-			<div id="captchaField">
-				<input
-					type="text"
-					value={props.userInput}
-					onChange={e => props.setUserInput(e.target.value)}
-					placeholder="Enter Captcha"
-					maxLength={6}
-					required={true}
-				/>
-				<span>{errorMessage}</span>
-			</div>
 			<button type="submit" onClick={handleValidate} id="btnLog">
 				Login
 			</button>
@@ -123,8 +78,6 @@ const Login = props => {
 				<Modal
 					name={props.name}
 					closeModal={closeModal}
-					// employeeCode={employeeCode}
-					// employeeID={employeeID}
 				/>
 			)}
 			{/* Error Modal */}
